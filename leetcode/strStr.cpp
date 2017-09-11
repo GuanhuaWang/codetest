@@ -5,28 +5,36 @@ int strStr(char* haystack, char* needle) {
 
     int hlen = strlen(haystack);
     int nlen = strlen(needle);
-    if(nlen==0)
+    if(nlen==0 || strcmp(haystack, needle) == 0 )
         return 0;
-    int j = 0;
-    int index = 0;
+    int index =0;
+    
     for(int i =0;i<hlen;i++)
     {
-        if(haystack[i]==needle[j])
+        index = i;
+        int flag = 1;
+        if(haystack[i]==needle[0])
         {
-            if(j == 0)
-                index = i;
-            j++;
-            if(j==nlen)
-                return index;
+            for(int k = 1;k<nlen;k++)
+            {
+             //   printf("haystack[i+k] is %c, needle[i+k] is %c\n",haystack[i+k],needle[k]);
+                if(haystack[i+k]!=needle[k])
+                {
+                    index =0;
+                    flag =0;
+               //     printf("This is over\n" );
+                    break;
+                }
+            }
+        if(flag==1 && i!=hlen-1)
+        {
+            return index;
+            break;
         }
-        else
-            j=0;
-        printf("i is %d, j is %d\n",i, j);
+
+        }
     }
-    if(j==nlen) 
-        return index;
-    else        
-        return -1;
+    return -1;
 }
 
 int main(int argc, char const *argv[])
