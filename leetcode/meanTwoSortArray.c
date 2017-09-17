@@ -5,12 +5,31 @@ double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Si
     int count1=0;
     int count2=0;
 
-
-    if(nums1Size+nums2Size==1)
+    if(nums1Size == 0 && nums2Size ==0)
+        return 0;
+    else if(nums1Size==0 && nums2Size !=0)
     {
-        if(nums1Size == 1) return nums1[0];
-        else return nums2[0];
+        if(nums2Size%2==0)
+            return (nums2[(int)(nums2Size/2-1)]+nums2[(int)(nums2Size/2)])/2.0;
+        else
+        {
+            printf("%d==========\n", (int)(nums2Size/2));
+            return nums2[(int)(nums2Size/2)];
+        }
     }
+    else if(nums1Size != 0 && nums2Size ==0)
+    {
+        if(nums1Size%2==0)
+            return (nums1[(int)(nums1Size/2-1)]+nums1[(int)(nums1Size/2)])/2.0;
+        else
+        {
+            printf("%d==========\n", (int)(nums1Size/2));
+            return nums1[(int)(nums1Size/2)];
+
+        }
+    }
+
+
     for(int i = 0;i<nums1Size;i++)
     {
         for(int j = 0; j<nums2Size;j++)
@@ -46,9 +65,9 @@ int main(int argc, char const *argv[])
 {
     
     int a1[] = {};
-    int a2[] ={2};
+    int a2[] ={1,2,3,4,5};
 
-    double c = findMedianSortedArrays(a1,0,a2,1);
+    double c = findMedianSortedArrays(a1,0,a2,5);
     printf("the mean is %f\n", c);
     return 0;
 }
