@@ -12,21 +12,18 @@ double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Si
         if(nums2Size%2==0)
             return (nums2[(int)(nums2Size/2-1)]+nums2[(int)(nums2Size/2)])/2.0;
         else
-        {
-            printf("%d==========\n", (int)(nums2Size/2));
             return nums2[(int)(nums2Size/2)];
-        }
     }
     else if(nums1Size != 0 && nums2Size ==0)
     {
         if(nums1Size%2==0)
             return (nums1[(int)(nums1Size/2-1)]+nums1[(int)(nums1Size/2)])/2.0;
         else
-        {
-            printf("%d==========\n", (int)(nums1Size/2));
             return nums1[(int)(nums1Size/2)];
-
-        }
+    }
+    else if(nums1Size == 1 && nums2Size ==1 && nums1[0] == nums2[0])
+    {
+        return nums1[0];
     }
 
 
