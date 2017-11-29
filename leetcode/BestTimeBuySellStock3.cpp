@@ -20,7 +20,7 @@ int maxProfit(int* prices, int pricesSize) {
     int maxprice = prices[pricesSize - 1];
     int res = leftprofit[pricesSize - 1];
     int rightMaxProfit = 0;
-    maxprofit = 0;
+
     for(int i = pricesSize-2; i>=0;i--){
         if(prices[i]>maxprice)
             maxprice = prices[i];
